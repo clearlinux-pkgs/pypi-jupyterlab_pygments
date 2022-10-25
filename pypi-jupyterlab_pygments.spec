@@ -4,7 +4,7 @@
 #
 Name     : pypi-jupyterlab_pygments
 Version  : 0.2.2
-Release  : 27
+Release  : 28
 URL      : https://files.pythonhosted.org/packages/69/8e/8ae01f052013ee578b297499d16fcfafb892927d8e41c1a0054d2f99a569/jupyterlab_pygments-0.2.2.tar.gz
 Source0  : https://files.pythonhosted.org/packages/69/8e/8ae01f052013ee578b297499d16fcfafb892927d8e41c1a0054d2f99a569/jupyterlab_pygments-0.2.2.tar.gz
 Summary  : Pygments theme using JupyterLab CSS variables
@@ -70,7 +70,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1656396800
+export SOURCE_DATE_EPOCH=1666712927
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -95,7 +95,7 @@ popd
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pypi-jupyterlab_pygments
-cp %{_builddir}/jupyterlab_pygments-0.2.2/LICENSE %{buildroot}/usr/share/package-licenses/pypi-jupyterlab_pygments/5dc7e0ef3878c3d4a92a7233208e6f91553de266
+cp %{_builddir}/jupyterlab_pygments-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/pypi-jupyterlab_pygments/5dc7e0ef3878c3d4a92a7233208e6f91553de266 || :
 pip install --root=%{buildroot} --no-deps --ignore-installed dist/*.whl
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
