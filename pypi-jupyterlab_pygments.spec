@@ -4,59 +4,23 @@
 #
 Name     : pypi-jupyterlab_pygments
 Version  : 0.2.2
-Release  : 30
+Release  : 32
 URL      : https://files.pythonhosted.org/packages/69/8e/8ae01f052013ee578b297499d16fcfafb892927d8e41c1a0054d2f99a569/jupyterlab_pygments-0.2.2.tar.gz
 Source0  : https://files.pythonhosted.org/packages/69/8e/8ae01f052013ee578b297499d16fcfafb892927d8e41c1a0054d2f99a569/jupyterlab_pygments-0.2.2.tar.gz
 Summary  : Pygments theme using JupyterLab CSS variables
 Group    : Development/Tools
 License  : BSD-3-Clause
-Requires: pypi-jupyterlab_pygments-data = %{version}-%{release}
-Requires: pypi-jupyterlab_pygments-license = %{version}-%{release}
-Requires: pypi-jupyterlab_pygments-python = %{version}-%{release}
-Requires: pypi-jupyterlab_pygments-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
 BuildRequires : pypi(jupyter_packaging)
 BuildRequires : pypi(jupyterlab)
+# Suppress stripping binaries
+%define __strip /bin/true
+%define debug_package %{nil}
 
 %description
 # JupyterLab Pygments Theme
 This package contains a syntax coloring theme for [pygments](http://pygments.org/) making use of
 the JupyterLab CSS variables.
-
-%package data
-Summary: data components for the pypi-jupyterlab_pygments package.
-Group: Data
-
-%description data
-data components for the pypi-jupyterlab_pygments package.
-
-
-%package license
-Summary: license components for the pypi-jupyterlab_pygments package.
-Group: Default
-
-%description license
-license components for the pypi-jupyterlab_pygments package.
-
-
-%package python
-Summary: python components for the pypi-jupyterlab_pygments package.
-Group: Default
-Requires: pypi-jupyterlab_pygments-python3 = %{version}-%{release}
-
-%description python
-python components for the pypi-jupyterlab_pygments package.
-
-
-%package python3
-Summary: python3 components for the pypi-jupyterlab_pygments package.
-Group: Default
-Requires: python3-core
-Provides: pypi(jupyterlab_pygments)
-
-%description python3
-python3 components for the pypi-jupyterlab_pygments package.
-
 
 %prep
 %setup -q -n jupyterlab_pygments-0.2.2
@@ -70,15 +34,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1666723492
+export SOURCE_DATE_EPOCH=1672285638
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 -m build --wheel --skip-dependency-check --no-isolation
 pushd ../buildavx2/
@@ -112,24 +76,3 @@ popd
 
 %files
 %defattr(-,root,root,-)
-
-%files data
-%defattr(-,root,root,-)
-/usr/share/jupyter/labextensions/jupyterlab_pygments/install.json
-/usr/share/jupyter/labextensions/jupyterlab_pygments/package.json
-/usr/share/jupyter/labextensions/jupyterlab_pygments/static/568.1e2faa2ba0bbe59c4780.js
-/usr/share/jupyter/labextensions/jupyterlab_pygments/static/747.8eb3ddccc7ec4987bff9.js
-/usr/share/jupyter/labextensions/jupyterlab_pygments/static/remoteEntry.aa1060b2d1221f8e5688.js
-/usr/share/jupyter/labextensions/jupyterlab_pygments/static/style.js
-/usr/share/jupyter/labextensions/jupyterlab_pygments/static/third-party-licenses.json
-
-%files license
-%defattr(0644,root,root,0755)
-/usr/share/package-licenses/pypi-jupyterlab_pygments/5dc7e0ef3878c3d4a92a7233208e6f91553de266
-
-%files python
-%defattr(-,root,root,-)
-
-%files python3
-%defattr(-,root,root,-)
-/usr/lib/python3*/*
