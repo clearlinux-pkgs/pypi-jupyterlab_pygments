@@ -7,7 +7,7 @@
 #
 Name     : pypi-jupyterlab_pygments
 Version  : 0.3.0
-Release  : 37
+Release  : 38
 URL      : https://files.pythonhosted.org/packages/90/51/9187be60d989df97f5f0aba133fa54e7300f17616e065d1ada7d7646b6d6/jupyterlab_pygments-0.3.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/90/51/9187be60d989df97f5f0aba133fa54e7300f17616e065d1ada7d7646b6d6/jupyterlab_pygments-0.3.0.tar.gz
 Summary  : Pygments theme using JupyterLab CSS variables
